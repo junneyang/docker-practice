@@ -16,7 +16,6 @@ docker最佳实践
 6.容器启动方式如下： 
 
 docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
-
     -e MYSQL_DATABASE="mysite" \
     -e MYSQL_USER="mysite" \
     -e MYSQL_PASSWORD="Admin@123" \
