@@ -1,0 +1,65 @@
+server {
+    listen                  443;
+    charset                 utf-8;
+    ssl                     on;
+    ssl_certificate         /opt/DJANGO-DEMO/applications/mysite/nginx/server.crt;
+    ssl_certificate_key     /opt/DJANGO-DEMO/applications/mysite/nginx/server.key;
+    root   /opt/DJANGO-DEMO/applications/mysite;
+    access_log  on;
+    
+    location / {
+        uwsgi_pass 127.0.0.1:9090;
+        include    uwsgi_params;
+    }
+#        location /media/ {
+#                alias /opt/DJANGO-DEMO/applications/mysite/static/;
+#                limit_conn perip 10;
+#                limit_rate 200k;
+#                limit_req  zone=portal burst=60;
+#                expires         5d;
+#        }
+    location /static/ {
+        expires 5d;
+        alias /opt/DJANGO-DEMO/applications/mysite/static/;
+    }
+
+    location ^(.*)\.favicon.ico$ {
+        log_not_found off;
+    }
+    location ~ /\.(ht|svn|git) {  
+        deny all;
+    }
+
+}
+
+server {
+    listen                  80;
+    charset                 utf-8;
+    access_log              on;
+    #server_name             localhost;
+    root   /opt/DJANGO-DEMO/applications/mysite;
+    location / {
+        uwsgi_pass 127.0.0.1:9090;
+        include    uwsgi_params;
+    }
+#        location /media/ {
+#                alias /opt/disk2/var/www/static/;
+#                limit_conn perip 10;
+#                limit_rate 200k;
+#                limit_req  zone=portal burst=60;
+#                expires         5d;
+#        }
+    location /static/ {
+        expires 5d;
+        alias /opt/DJANGO-DEMO/applications/mysite/static/;
+    }
+
+    location ^(.*)\.favicon.ico$ {
+        log_not_found off;
+    }
+    location ~ /\.(ht|svn|git) {  
+        deny all;
+    }
+}
+
+

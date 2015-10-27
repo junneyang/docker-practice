@@ -1,0 +1,25 @@
+# This is a comment
+#FROM ubuntu:14.04
+#MAINTAINER JunneYang <597092663@qq.com>
+
+#RUN apt-get update -y
+
+#RUN apt-get install python-pip -y
+#RUN pip install --upgrade pip
+#RUN pip install Django==1.8.3 
+#RUN apt-get install python-dev libmysqlclient-dev -y
+#RUN pip install MySQL-python==1.2.5
+
+#RUN pip install uwsgi
+#RUN apt-get install nginx -y
+
+FROM 10.20.0.189:5000/django:1.0.0.0
+
+RUN mkdir -p /opt/DJANGO-DEMO/applications
+COPY ./applications/ /opt/DJANGO-DEMO/applications/
+
+VOLUME ["/opt/DJANGO-DEMO/applications/mysite/logs", "/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles"]
+
+ENTRYPOINT ["/bin/bash"]
+CMD ["-c", "cd /opt/DJANGO-DEMO/applications/mysite/ && ./run.sh"]
+

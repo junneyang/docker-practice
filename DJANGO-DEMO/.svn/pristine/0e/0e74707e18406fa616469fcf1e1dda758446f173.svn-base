@@ -1,0 +1,62 @@
+{
+    "id": "/product/envname/mysqldb",
+    "cpus": 0.1,
+    "mem": 16.0,
+    "ports": [
+        0
+    ],
+    "requirePorts": false,
+    "instances": 1,
+    "executor": "",
+    "container": {
+        "type": "DOCKER",
+        "docker": {
+            "image": "10.20.0.189:5000/mysql:5.6",
+            "forcePullImage": true,
+            "network": "BRIDGE",
+            "portMappings": [
+                {
+                    "containerPort": 3306,
+                    "hostPort": 31111,
+                    "servicePort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "privileged": false,
+            "parameters": [
+            ]
+        },
+        "volumes": [
+        ]
+    },
+    "env": {
+        "MYSQL_DATABASE": "mysite",
+        "MYSQL_ROOT_PASSWORD": "Admin@123",
+        "MYSQL_USER": "mysite",
+        "MYSQL_PASSWORD": "Admin@123"
+    },
+    "constraints": [
+    ],
+    "labels": {
+    },
+    "uris": [
+    ],
+    "dependencies": [],
+    "healthChecks": [
+        {
+            "protocol": "TCP",
+            "gracePeriodSeconds": 3,
+            "intervalSeconds": 5,
+            "portIndex": 0,
+            "timeoutSeconds": 5,
+            "maxConsecutiveFailures": 3
+        }
+    ],
+    "backoffSeconds": 1,
+    "backoffFactor": 1.15,
+    "maxLaunchDelaySeconds": 3600,
+    "upgradeStrategy": {
+        "minimumHealthCapacity": 0.5,
+        "maximumOverCapacity": 0.2
+    }
+}
