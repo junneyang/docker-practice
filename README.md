@@ -19,3 +19,4 @@ docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
     -v /opt/fileserver/product-envname-django/files/sharedfiles:/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles \    
     10.20.0.189:5000/django:1.0.0.2
     
+
