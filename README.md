@@ -15,14 +15,14 @@ docker最佳实践
 
 6.容器启动方式如下： 
 
-docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \ 
+docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
 
-    -e MYSQL_DATABASE="mysite" \ 
-    -e MYSQL_USER="mysite" \ 
-    -e MYSQL_PASSWORD="Admin@123" \ 
-    -e MYSQL_HOST="10.20.0.88" \ 
-    -e MYSQL_PORT="31111" \ 
-    -v /opt/fileserver/product-envname-django/logs:/opt/DJANGO-DEMO/applications/mysite/logs \ 
-    -v /opt/fileserver/product-envname-django/files/sharedfiles:/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles \ 
-    10.20.0.189:5000/django:1.0.0.2 
+    -e MYSQL_DATABASE="mysite" \
+    -e MYSQL_USER="mysite" \
+    -e MYSQL_PASSWORD="Admin@123" \
+    -e MYSQL_HOST="10.20.0.88" \
+    -e MYSQL_PORT="31111" \
+    -v /opt/fileserver/product-envname-django/logs:/opt/DJANGO-DEMO/applications/mysite/logs \
+    -v /opt/fileserver/product-envname-django/files/sharedfiles:/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles \
+    10.20.0.189:5000/django:1.0.0.2
     
