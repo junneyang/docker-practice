@@ -2,6 +2,7 @@
 my docker practice
 
 docker最佳实践
+
 1.applications放置应用代码
 2.files, logs放置stateful文件与日志，水平扩展需要使用分布式存储
 3.支持stateful、stateless service
