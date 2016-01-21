@@ -427,18 +427,18 @@ DATABASES = {
         'ENGINE':   'django.db.backends.mysql',                                                                                           
         'NAME':     'mysite',                                                                                                         
         'USER':     'mysite',                                                                                                               
-        'PASSWORD': 'Admin@123',                                                                                                               
+        'PASSWORD': 'XXXXXXXXXXXXXXXXXXXXXXXX@123',                                                                                                               
         'HOST':     'mysql-mysite-product.marathon.mesos',                                                                                                         
-        'PORT':     31234,                                                                                                                 
+        'PORT':     XXXXXXXXXXXX,                                                                                                                 
     }                                                                                                                                     
 }
 
 docker run -i -t \
     -e MYSQL_DATABASE="mysite" \
     -e MYSQL_USER="mysite" \
-    -e MYSQL_PASSWORD="Admin@123" \
-    -e=MYSQL_HOST="mysql-mysite-product.marathon.mesos" \
-    -e MYSQL_PORT="31234" \
+    -e MYSQL_PASSWORD="XXXXXXXXXXXX@XXXXXXXXXXXX" \
+    -e=MYSQL_HOST="XXXXXXXXXXXX" \
+    -e MYSQL_PORT="XXXXXXXXXXXX" \
     ubuntu:djangosave /bin/sh -c 'cd /opt/mysite/mysite && ./upsetting.sh && cd /opt/mysite && python manage.py runserver 0.0.0.0:8888'
 
 cat >> /opt/mysite/mysite/settings.py <<EOF
@@ -457,17 +457,17 @@ EOF
 docker run -i -t \
     -e MYSQL_DATABASE="mysite" \
     -e MYSQL_USER="mysite" \
-    -e MYSQL_PASSWORD="Admin@123" \
-    -e=MYSQL_HOST="mysql-mysite-product.marathon.mesos" \
-    -e MYSQL_PORT="31234" \
+    -e MYSQL_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX@123" \
+    -e=MYSQL_HOST="XXXXXXXXXXXX" \
+    -e MYSQL_PORT="XXXXXXXXXXXX" \
     ubuntu:djangosave /bin/sh -c 'cd /opt/mysite/uwsgi && uwsgi uwsgi.ini && service nginx start'
 
 
 docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
     -e MYSQL_DATABASE="mysite" \
     -e MYSQL_USER="mysite" \
-    -e MYSQL_PASSWORD="Admin@123" \
-    -e MYSQL_HOST="10.20.0.88" \
+    -e MYSQL_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX" \
+    -e MYSQL_HOST="XXXXXXXXXXXX" \
     -e MYSQL_PORT="31111" \
     -v /opt/DJANGO-DEMO/files/sharedfiles:/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles \
     -v /opt/DJANGO-DEMO/logs:/opt/DJANGO-DEMO/applications/mysite/logs \
@@ -475,9 +475,9 @@ docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
 
 docker run --name=product-envname-mysql -d -it -p 31111:3306 \
     -e MYSQL_DATABASE="mysite" \
-    -e MYSQL_ROOT_PASSWORD="Admin@123" \
+    -e MYSQL_ROOT_PASSWORD="XXXXXXXXXXXX" \
     -e MYSQL_USER="mysite" \
-    -e MYSQL_PASSWORD="Admin@123" \
+    -e MYSQL_PASSWORD="XXXXXXXXXXXX" \
     mysql:5.6
 
 https://docs.docker.com/machine/install-machine/
@@ -504,8 +504,8 @@ mkdir -p /opt/fileserver/product-envname-django/files/sharedfiles
 docker run --name=product-envname-django -d -it -p 80:80 -p 443:443 \
     -e MYSQL_DATABASE="mysite" \
     -e MYSQL_USER="mysite" \
-    -e MYSQL_PASSWORD="Admin@123" \
-    -e MYSQL_HOST="10.20.0.88" \
+    -e MYSQL_PASSWORD="XXXXXXXXXXXX" \
+    -e MYSQL_HOST="XXXXXXXXXXXX" \
     -e MYSQL_PORT="31111" \
     -v /opt/fileserver/product-envname-django/files/sharedfiles:/opt/DJANGO-DEMO/applications/mysite/template/sharedfiles \
     -v /opt/fileserver/product-envname-django/logs:/opt/DJANGO-DEMO/applications/mysite/logs \
